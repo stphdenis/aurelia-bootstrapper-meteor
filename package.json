@@ -1,6 +1,6 @@
 {
   "name": "aurelia-bootstrapper-meteor",
-  "version": "1.0.0-beta.1.0.1",
+  "version": "1.0.0-beta.1.0.3",
   "description": "Sets up the meteor configuration for the aurelia framework and gets you up and running quick and easy.",
   "keywords": [
     "aurelia",
