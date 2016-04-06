@@ -13,11 +13,12 @@
     "url": "https://github.com/stphdenis/aurelia-bootstrapper-meteor/issues"
   },
   "license": "MIT",
-  "author": "Denis Stéphane <stph.denis@gmail.com>",
+  "author": "Denis StÃ©phane <stph.denis@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/stphdenis/aurelia-bootstrapper-meteor.git"
   },
+  "main": "dist/aurelia-bootstrapper-meteor.js",
   "dependencies": {
     "aurelia-event-aggregator": "^1.0.0-beta.1.1.0",
     "aurelia-framework": "^1.0.0-beta.1.1.0",
