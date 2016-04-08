@@ -11,6 +11,8 @@ var _aureliaPalBrowser = require('aurelia-pal-browser');
 
 var _aureliaLoaderMeteor = require('aurelia-loader-meteor');
 
+require('aurelia-framework');
+
 var bootstrapQueue = [];
 var sharedLoader = null;
 var Aurelia = null;

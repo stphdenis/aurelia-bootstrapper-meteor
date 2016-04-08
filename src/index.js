@@ -2,6 +2,15 @@ import 'aurelia-polyfills';
 import { initialize } from 'aurelia-pal-browser';
 import { MeteorLoader } from 'aurelia-loader-meteor';
 
+import 'aurelia-framework';
+//import 'aurelia-loader';
+//import 'aurelia-metadata';
+//import 'aurelia-pal';
+//import 'aurelia-pal-browser';
+//import 'aurelia-path';
+import 'aurelia-templating-binding';
+import 'aurelia-templating-resources';
+
 let bootstrapQueue = [];
 let sharedLoader = null;
 let Aurelia = null;
