@@ -23,6 +23,6 @@
     "aurelia-loader-meteor": "^1.0.0-beta.1.0.0",
     "aurelia-pal": "^1.0.0-beta.1.2.0",
     "aurelia-pal-browser": "^1.0.0-beta.1.2.0",
-    "aurelia-polyfills": "^1.0.0-beta.1.1.0",
+    "aurelia-polyfills": "^1.0.0-beta.1.1.0"
   }
 }
