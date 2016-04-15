@@ -1,6 +1,6 @@
 {
   "name": "aurelia-bootstrapper-meteor",
-  "version": "1.0.0-beta.1.2.3",
+  "version": "1.0.0-beta.1.2.4",
   "description": "The bootstrapper for the implementation of Aurelia's loader interface for meteor.",
   "keywords": [
     "aurelia",
@@ -24,7 +24,7 @@
     "aurelia-dependency-injection": "^1.0.0-beta.1.2.0",
     "aurelia-framework": "^1.0.0-beta.1.2.1",
     "aurelia-loader": "^1.0.0-beta.1.2.0",
-    "aurelia-loader-meteor": "^1.0.0-beta.1.2.3",
+    "aurelia-loader-meteor": "^1.0.0-beta.1.2.4",
     "aurelia-logging": "^1.0.0-beta.1.2.0",
     "aurelia-metadata": "^1.0.0-beta.1.2.0",
     "aurelia-pal": "^1.0.0-beta.1.2.0",
