@@ -2,15 +2,6 @@ import 'aurelia-polyfills';
 import { initialize } from 'aurelia-pal-browser';
 import { MeteorLoader } from 'aurelia-loader-meteor';
 
-import 'aurelia-framework';
-//import 'aurelia-loader';
-//import 'aurelia-metadata';
-//import 'aurelia-pal';
-//import 'aurelia-pal-browser';
-//import 'aurelia-path';
-import 'aurelia-templating-binding';
-import 'aurelia-templating-resources';
-
 let bootstrapQueue = [];
 let sharedLoader = null;
 let Aurelia = null;
@@ -85,6 +76,41 @@ function run() {
       }
       bootstrapQueue = null;
     });
+
+    try { require('aurelia-animator-velocity'); } catch(e) {}
+    try { require('aurelia-animator-css'); } catch(e) {}
+    try { require('aurelia-binding'); } catch(e) {}
+    try { require('aurelia-cache'); } catch(e) {}
+    try { require('aurelia-dependency-injection'); } catch(e) {}
+    try { require('aurelia-dialog'); } catch(e) {}
+    try { require('aurelia-event-aggregator'); } catch(e) {}
+    try { require('aurelia-fetch-client'); } catch(e) {}
+    try { require('aurelia-framework'); } catch(e) {}
+    try { require('aurelia-history'); } catch(e) {}
+    try { require('aurelia-history-browser'); } catch(e) {}
+    try { require('aurelia-html-import-template-loader'); } catch(e) {}
+    try { require('aurelia-html-template-element'); } catch(e) {}
+    try { require('aurelia-http-client'); } catch(e) {}
+    try { require('aurelia-i18n'); } catch(e) {}
+//    try { require('aurelia-loader'); } catch(e) {}
+    try { require('aurelia-logging'); } catch(e) {}
+    try { require('aurelia-logging-console'); } catch(e) {}
+//    try { require('aurelia-metadata'); } catch(e) {}
+//    try { require('aurelia-pal'); } catch(e) {}
+//    try { require('aurelia-pal-browser'); } catch(e) {}
+    try { require('aurelia-path'); } catch(e) {}
+//    try { require('aurelia-polyfills'); } catch(e) {}
+    try { require('aurelia-route-recognizer'); } catch(e) {}
+    try { require('aurelia-router'); } catch(e) {}
+    try { require('aurelia-task-queue'); } catch(e) {}
+    try { require('aurelia-templating'); } catch(e) {}
+    try { require('aurelia-templating-binding'); } catch(e) {}
+    try { require('aurelia-templating-resources'); } catch(e) {}
+    try { require('aurelia-templating-router'); } catch(e) {}
+    try { require('aurelia-templating-validation'); } catch(e) {}
+    try { require('aurelia-ui-virtualization'); } catch(e) {}
+    try { require('aurelia-validation'); } catch(e) {}
+    try { require('aurelia-web-components'); } catch(e) {}
   });
 }
 
