@@ -1,17 +1,10 @@
-'use strict';
+import 'aurelia-polyfills';
+import {initialize} from 'aurelia-pal-browser';
+import {MeteorLoader} from 'aurelia-loader-meteor';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.bootstrap = bootstrap;
+// "aurelia-loader-meteor": "npm:aurelia-loader-meteor/dist/aurelia-loader-meteor.d.ts",
 
-require('aurelia-polyfills');
-
-var _aureliaPalBrowser = require('aurelia-pal-browser');
-
-var _aureliaLoaderMeteor = require('aurelia-loader-meteor');
-
-if(false) {
+if (false) { // Just to say to Meteor to get this modules but not to load them.
   require('aurelia-event-aggregator');
   require('aurelia-framework');
   require('aurelia-history-browser');
@@ -20,16 +13,16 @@ if(false) {
   require('aurelia-templating-router');
 }
 
-var bootstrapQueue = [];
-var sharedLoader = null;
-var Aurelia = null;
+let bootstrapQueue = [];
+let sharedLoader = null;
+let Aurelia = null;
 
 function onBootstrap(callback) {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     if (sharedLoader) {
       resolve(callback(sharedLoader));
     } else {
-      bootstrapQueue.push(function () {
+      bootstrapQueue.push(() => {
         try {
           resolve(callback(sharedLoader));
         } catch (e) {
@@ -41,67 +34,70 @@ function onBootstrap(callback) {
 }
 
 function ready(global) {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
+    function completed() {
+      global.document.removeEventListener('DOMContentLoaded', completed);
+      global.removeEventListener('load', completed);
+      resolve(global.document);
+    }
+
     if (global.document.readyState === 'complete') {
       resolve(global.document);
     } else {
       global.document.addEventListener('DOMContentLoaded', completed);
       global.addEventListener('load', completed);
     }
-
-    function completed() {
-      global.document.removeEventListener('DOMContentLoaded', completed);
-      global.removeEventListener('load', completed);
-      resolve(global.document);
-    }
   });
+}
+
+function config(loader, appHost, configModuleId) {
+  const aurelia = new Aurelia(loader);
+  aurelia.host = appHost;
+
+  if (configModuleId) {
+    return loader.loadModule(configModuleId).then(customConfig => customConfig.configure(aurelia));
+  }
+
+  aurelia.use
+    .standardConfiguration()
+    .developmentLogging();
+
+  return aurelia.start().then(() => aurelia.setRoot());
 }
 
 function handleApp(loader, appHost) {
   return config(loader, appHost, appHost.getAttribute('aurelia-app'));
 }
 
-function config(loader, appHost, configModuleId) {
-  var aurelia = new Aurelia(loader);
-  aurelia.host = appHost;
-
-  if (configModuleId) {
-    return loader.loadModule(configModuleId).then(function (customConfig) {
-      return customConfig.configure(aurelia);
-    });
-  }
-
-  aurelia.use.standardConfiguration().developmentLogging();
-
-  return aurelia.start().then(function () {
-    return aurelia.setRoot();
-  });
-}
-
 function run() {
-  return ready(window).then(function (doc) {
-    (0, _aureliaPalBrowser.initialize)();
+  return ready(window).then(doc => {
+    initialize();
 
-    var appHost = doc.querySelectorAll('[aurelia-app]');
-    var loader = new _aureliaLoaderMeteor.MeteorLoader();
-    loader.loadModule('aurelia-framework').then(function (m) {
+    const appHost = doc.querySelectorAll('[aurelia-app]');
+    const loader = new MeteorLoader();
+    loader.loadModule('aurelia-framework').then(m => {
       Aurelia = m.Aurelia;
-      for (var i = 0, ii = appHost.length; i < ii; ++i) {
+      for (let i = 0, ii = appHost.length; i < ii; ++i) {
         handleApp(loader, appHost[i]).catch(console.error.bind(console));
       }
 
       sharedLoader = loader;
-      for (var _i = 0, _ii = bootstrapQueue.length; _i < _ii; ++_i) {
-        bootstrapQueue[_i]();
+      for (let i = 0, ii = bootstrapQueue.length; i < ii; ++i) {
+        bootstrapQueue[i]();
       }
       bootstrapQueue = null;
     });
   });
 }
 
-function bootstrap(configure) {
-  return onBootstrap(function (loader) {
-    var aurelia = new Aurelia(loader);
+/**
+ * Manually bootstraps an application.
+ * @param configure A callback which passes an Aurelia instance to the developer to manually configure and start up the app.
+ * @return A Promise that completes when configuration is done.
+ */
+export function bootstrap(configure) {
+  return onBootstrap(loader => {
+    const aurelia = new Aurelia(loader);
     return configure(aurelia);
   });
 }

@@ -1,0 +1,9 @@
+{
+  "name": "aurelia-bootstrapper-meteor",
+  "version": false,
+  "dependencies": {
+    "aurelia-pal": "npm:aurelia-pal/dist/aurelia-pal.d.ts",
+    "aurelia-polyfills": "npm:aurelia-polyfills/dist/aurelia-polyfills.d.ts",
+    "aurelia-pal-browser": "npm:aurelia-pal-browser/dist/aurelia-pal-browser.d.ts"
+  }
+}

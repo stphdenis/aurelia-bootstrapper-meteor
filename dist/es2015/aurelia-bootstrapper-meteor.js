@@ -1,8 +1,8 @@
 import 'aurelia-polyfills';
 import { initialize } from 'aurelia-pal-browser';
-import { MeteorLoader } from 'aurelia-loader-meteor'; // "aurelia-loader-meteor": "npm:aurelia-loader-meteor/dist/aurelia-loader-meteor.d.ts",
+import { MeteorLoader } from 'aurelia-loader-meteor';
 
-if (false) { // Just to say to Meteor to get this modules but not to load them.
+if (false) {
   require('aurelia-event-aggregator');
   require('aurelia-framework');
   require('aurelia-history-browser');
@@ -56,9 +56,7 @@ function config(loader, appHost, configModuleId) {
     return loader.loadModule(configModuleId).then(customConfig => customConfig.configure(aurelia));
   }
 
-  aurelia.use
-    .standardConfiguration()
-    .developmentLogging();
+  aurelia.use.standardConfiguration().developmentLogging();
 
   return aurelia.start().then(() => aurelia.setRoot());
 }
@@ -88,11 +86,6 @@ function run() {
   });
 }
 
-/**
- * Manually bootstraps an application.
- * @param configure A callback which passes an Aurelia instance to the developer to manually configure and start up the app.
- * @return A Promise that completes when configuration is done.
- */
 export function bootstrap(configure) {
   return onBootstrap(loader => {
     const aurelia = new Aurelia(loader);

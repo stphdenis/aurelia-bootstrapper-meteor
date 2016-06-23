@@ -1,0 +1,1 @@
+export * from 'aurelia-bootstrapper-meteor/aurelia-bootstrapper-meteor';
